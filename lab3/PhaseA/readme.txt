@@ -1,0 +1,15 @@
+所有要做的就是在LifeForm.cpp里把在LifeForm.h里定义的，且没有在LifeForm-Craig.cpp里实现的函数实现出来
+
+
+	所有的LifeForm在本身object里有自己的位子（pos），同时，每个LifeForm在QuadTree里有相对应的位置。所有有一点就是要保持两个位置的同步。
+
+	在QuadTree里，每个LifeForm的对象和它的region_resize函数（实际上是将region_resize通过Lammda表达式以一个object的形式存起来）一起存着。这个region_resize函数就是一个callback。所谓的callback函数，按我的理解是立即执行的，和Event里不一样。每当需要改变QuadTree里面的位置时，需要改动的那个LifeForm就会立即调用这个callback——region_resize
+
+	LifeForm里面的update_position会调用QuadTree里面的update_position。QuadTree里面的update_position会利用callback调用region_resize。region_resize又会调用LifeForm的update_position...
+
+	剩下的encounter按照说明就比较清楚了
+
+	
+现在有一个问题是在perceive函数里，按理说应该是需要先update_position再perceive。但是如果先update里，整个simulator有可能会crash掉；若不update就perceive则不会crash
+
+lifeform文件夹下是除了一开始的algea和Craig的其他几种lifeform，可以用来检测simulator

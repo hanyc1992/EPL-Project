@@ -1,0 +1,12 @@
+主要写了两个class:	iterator和const_iterator
+并且考虑了throw exception的机制
+两个iter构成的constructor
+
+
+注意实验要求中的throw 的exception，是根据在vector容器中的相对位置（也就是index）来决定的，而不是一开始认为的是根据绝对地址决定的
+
+最终上交版是对的，按照Index写的
+错误版是按照绝对地址写的。同时，错误版还没有更正 两个iter构成的constructor 的错误：返回值问题
+
+
+自己在phaseC的test里写了几个test case， 把助教给的4个例子测了没问题

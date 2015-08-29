@@ -1,0 +1,15 @@
+move syntax:		http://www.cprogramming.com/c++11/rvalue-references-and-move-semantics-in-c++11.html
+
+
+
+
+
+note:	
+		Rvalue reference is not rvalue. It is lvalue. The thing it points to is rvalue.
+		we can use "std::move()" to turn an lvalue into an rvalue, so that you can invoke the move constructor.
+			#include <utility> // for std::move
+
+
+
+编程注意点：
+在resize时，无论rvalue还是lvalue，都用Move来resize.	程序中保留了用于phase1a的resize,但是没有用。用的是resize_move

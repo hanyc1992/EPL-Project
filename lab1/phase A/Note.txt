@@ -1,0 +1,20 @@
+		 * With most operators, the function syntax and the operator syntax are identical -- it's just syntactic sugar
+		 * For some reason in C++ (bad judgment?) the new and delete operators are the exception.
+		 * When you invoke "new T", it actually does two things, it allocates memory and then invokes a constructor for T.
+		 * When you invoke "operator new(size), the constructor is not executed, you only allocate space.
+		 * For even more obscure reasons, if you do want to run the constructor, you can do so with another syntactic
+		 * variant of the new operator (it's called "placement new"). This perverse syntax goes as follows
+		 *      new (address) T
+		 * Where address is an expression of type T*. The compiler interprets placement new as a command to run the
+		 * constructor for type T at the address you specified. So, to make a long story slightly shorter and vastly
+		 * more precise....
+		 *       T* p = new T{args...};
+		 * is equivalent to
+		 *       T* p = (T*) operator new(sizeof(T));
+		 *       new (p) T{args...};
+		 * where T is a type, and args... is a list of arguments that you want to pass to the constructor
+
+
+
+about "new" & "placement new"
+about allocate memory and initialization

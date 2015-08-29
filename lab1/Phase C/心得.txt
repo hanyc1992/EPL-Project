@@ -1,0 +1,5 @@
+自己的定义的一个类，一般需要自己写iterator用作对外的接口
+
+例如本proj自己写一个vector类，除了vector类自己内部的operation（例如++， --， =...）还需要些iterator和const_iterator的类。自己写的iterator（或const_iterator）类，需要满足一般iterator的规范。诸如需要配合由标准libaray写的iterator_traits：可以通过在iterator类中直接定义value_type等或通过继承std::iterator来实现。
+
+iterator类里面需要再实现各种iterator需要的操作。功能的强弱取决于iterator的类型（random/forward...）
